@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Avatar,
+  Box,
   Button,
   Container,
   Grid,
@@ -13,34 +14,30 @@ import { red } from "@material-ui/core/colors";
 
 const Profile: React.FC = () => {
   const useStyles = makeStyles((theme: Theme) => ({
+    root: {
+      padding: theme.spacing(3, 2),
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center"
+    },
     fullWidth: {
       width: "100%",
     },
     paper: {
       padding: 10
     },
-    nestedContainer: {
-      margin: 5,
-    },
+    gridItem: {
+      margin: 0
+    }
   }));
   const classes = useStyles();
 
   return (
-    <div>
-      <Grid container className={classes.fullWidth} style={{ padding: 20 }}>
-        <Paper
-          className={`${classes.paper} ${classes.fullWidth}`}
-          style={{ backgroundColor: "#f5f5f5" }}
-        >
-          {/* <Paper
-            className={`${classes.fullWidth}`}
-            style={{ backgroundColor: "#fafafa",}}
-          > */}
-            <Grid
-              container
-              className={`${classes.nestedContainer} ${classes.fullWidth}`}
-              spacing={5}
-            >
+    <Container>
+       <Paper
+          className={` ${classes.fullWidth} ${classes.root}`}
+          style={{ backgroundColor: "#f5f5f5" }}>
+            <Grid container className={classes.fullWidth} style={{ padding: 20 }} spacing={5}>
               <Grid item xs={12} md={6}>
                 <TextField
                   className={classes.fullWidth}
@@ -49,7 +46,7 @@ const Profile: React.FC = () => {
                   label="First Name"
                 />
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid item  xs={12} md={6}>
                 <TextField
                   className={classes.fullWidth}
                   variant="outlined"
@@ -57,13 +54,7 @@ const Profile: React.FC = () => {
                   label="Last Name"
                 />
               </Grid>
-            </Grid>
-            <Grid
-              container
-              className={`${classes.nestedContainer} ${classes.fullWidth}`}
-              spacing={5}
-            >
-              <Grid item xs={12}>
+              <Grid item  xs={12}>
                 <TextField
                   className={classes.fullWidth}
                   variant="outlined"
@@ -71,7 +62,7 @@ const Profile: React.FC = () => {
                   label="Email Address"
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item  xs={12}>
                 <TextField
                   className={classes.fullWidth}
                   variant="outlined"
@@ -79,24 +70,14 @@ const Profile: React.FC = () => {
                   label="Phone Number"
                 />
               </Grid>
-            </Grid>
-          <Grid
-            container
-            className={`${classes.nestedContainer} ${classes.fullWidth}`}
-            spacing={5}
-            justify="flex-end"
-          >
-            <Grid item xs={12} md={6}>
+              <Grid item  xs={12} md={6}>
               <Button variant="contained" style={{ width: "100%" }}>
                 Submit
               </Button>
             </Grid>
-          </Grid>
-          {/* </Paper> */}
-
-        </Paper>
-      </Grid>
-    </div>
+           </Grid>
+      </Paper>
+    </Container>
   );
 };
 
