@@ -32,7 +32,7 @@ const Header: React.FC = () => {
     <div className={classes.root}>
       <AppBar position="static" className={classes.bar}>
         <Toolbar>
-          <Box component="div" display={{ md: "none" }}>
+          <Box component="div" display={{ md: "none" }} className={classes.loginButton}>
             <IconButton
               edge="start"
               // className={classes.menuButton}
@@ -42,10 +42,11 @@ const Header: React.FC = () => {
               <MenuIcon />
             </IconButton>
           </Box>
-
-          <Button color="inherit" className={classes.loginButton}>
-            Login
-          </Button>
+          <Box component="div" display={{xs: "none", md: "block" }} className={classes.loginButton}>
+            <Button color="inherit">
+              Login
+            </Button>
+          </Box>
         </Toolbar>
       </AppBar>
     </div>
