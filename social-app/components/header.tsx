@@ -1,20 +1,18 @@
-import React from "react";
 import {
-  makeStyles,
-  Theme,
   AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
-  Button,
   Box,
+  Button,
   Drawer,
+  IconButton,
+  List,
   ListItem,
   ListItemText,
-  List,
+  makeStyles,
+  Theme,
+  Toolbar,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-// const {StylePropable, StyleResizable} = Mixins
+import React from "react";
 
 const Header: React.FC = () => {
   const useStyles = makeStyles((theme: Theme) => ({
