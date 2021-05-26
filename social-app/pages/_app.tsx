@@ -23,9 +23,8 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ThemeProvider theme={myTheme}>
-        <Header>
-          <Component {...pageProps} />
-        </Header>
+        <Header />
+        <Component {...pageProps} />
       </ThemeProvider>
     </React.Fragment>
   );

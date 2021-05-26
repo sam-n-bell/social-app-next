@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import { DataGrid } from "@material-ui/data-grid";
-import { mockTableData, mockTableDataColumns } from "./mockdata";
+import { mockTableData, mockTableDataColumns } from "../../mockData/mockdata";
 
 const DataGridExample: React.FC = () => {
   const useStyles = makeStyles((theme: Theme) => ({
