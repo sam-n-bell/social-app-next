@@ -4,6 +4,7 @@ import { AppProps } from "next/app";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import myTheme from "../theme";
 import { ThemeProvider } from "@material-ui/core";
+import Header from "../components/header";
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   React.useEffect(() => {
@@ -22,7 +23,9 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ThemeProvider theme={myTheme}>
-        <Component {...pageProps} />
+        <Header>
+          <Component {...pageProps} />
+        </Header>
       </ThemeProvider>
     </React.Fragment>
   );
