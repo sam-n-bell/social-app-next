@@ -13,6 +13,7 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import React from "react";
+import LoginDialog from "./logindialog";
 
 const Header: React.FC = () => {
   const useStyles = makeStyles((theme: Theme) => ({
@@ -34,6 +35,11 @@ const Header: React.FC = () => {
   const classes = useStyles();
 
   const [showDrawer, setShowDrawer] = React.useState<boolean>(false);
+  const [loginOpen, setLoginOpen] = React.useState<boolean>(false);
+
+  const toggleLoginModal = (val: boolean) => {
+    setLoginOpen(val);
+  };
 
   const toggleDrawer = (status: boolean) => (event) => {
     setShowDrawer(status);
@@ -55,6 +61,7 @@ const Header: React.FC = () => {
 
   return (
     <div className={classes.root}>
+      <LoginDialog open={loginOpen} onClose={setLoginOpen} />
       <Drawer
         anchor={"left"}
         open={showDrawer}
@@ -84,7 +91,14 @@ const Header: React.FC = () => {
             display={{ xs: "none", md: "block" }}
             className={classes.loginButton}
           >
-            <Button color="inherit">Login</Button>
+            <Button
+              color="inherit"
+              onClick={(e) => {
+                setLoginOpen(true);
+              }}
+            >
+              Login
+            </Button>
             {/* <Button color="inherit">Logout</Button> */}
           </Box>
         </Toolbar>
