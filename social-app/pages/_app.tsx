@@ -1,10 +1,10 @@
-import React from "react";
-import Head from "next/head";
-import { AppProps } from "next/app";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import myTheme from "../theme";
 import { ThemeProvider } from "@material-ui/core";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { AppProps } from "next/app";
+import Head from "next/head";
+import React from "react";
 import Header from "../components/header";
+import myTheme from "../theme";
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   React.useEffect(() => {
