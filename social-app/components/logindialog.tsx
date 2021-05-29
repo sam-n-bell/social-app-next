@@ -1,15 +1,16 @@
 import {
   Button,
   Dialog,
+  DialogActions,
+  DialogContent,
   DialogTitle,
-  List,
-  ListItem,
+  Grid,
   TextField,
+  Typography,
 } from "@material-ui/core";
+import { Form, Formik, FormikProps } from "formik";
 import React from "react";
 import { loginForm } from "../validationSchemas/authSchemas";
-import { Formik, Form, FormikProps } from "formik";
-import yup from "yup";
 
 interface DialogProps {
   open: boolean;
@@ -43,95 +44,106 @@ const LoginDialog: React.FC<DialogProps> = ({ open, onClose }) => {
   return (
     <Dialog open={open} onClose={handleClose}>
       <DialogTitle>
-        <span style={{ textAlign: "center", justifyContent: "center" }}>
+        <Typography variant="h5" align="center">
           Account Login
-        </span>
+        </Typography>
       </DialogTitle>
-      <List>
-        <Formik
-          initialValues={{
-            email: "",
-            password: "",
-          }}
-          onSubmit={(values: ILoginForm) => {
-            setTimeout(() => {
-              alert("ok");
-            }, 500);
-          }}
-          validationSchema={loginForm}
-        >
-          {(props: FormikProps<ILoginForm>) => {
-            const {
-              values,
-              touched,
-              errors,
-              handleBlur,
-              handleChange,
-              isSubmitting,
-            } = props;
-            return (
-              <Form>
-                <ListItem>
-                  <TextField
-                    required
-                    id="email"
-                    variant="filled"
-                    label="Email Address"
-                    value={values.email}
-                    type="text"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    error={errors.email && touched.email ? true : false}
-                    helperText={
-                      errors.email && touched.email
-                        ? errors.email
-                        : "Enter Your Email"
-                    }
-                  />
-                </ListItem>
-                <ListItem>
-                  <TextField
-                    required
-                    variant="filled"
-                    label="Password"
-                    id="password"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    error={errors.password && touched.password ? true : false}
-                    helperText={
-                      errors.password && touched.password
-                        ? errors.password
-                        : "Enter Your Password"
-                    }
-                    type="password"
-                  />
-                </ListItem>
-                <ListItem>
-                  <Button
-                    type="submit"
-                    color="primary"
-                    variant="contained"
-                    size="large"
-                    fullWidth
-                  >
-                    LOGIN
-                  </Button>
-                </ListItem>
-                <ListItem>
-                  <Button
-                    color="secondary"
-                    variant="outlined"
-                    size="large"
-                    fullWidth
-                  >
-                    CANCEL
-                  </Button>
-                </ListItem>
-              </Form>
-            );
-          }}
-        </Formik>
-      </List>
+      <Formik
+        initialValues={{
+          email: "",
+          password: "",
+        }}
+        onSubmit={(values: ILoginForm) => {
+          setTimeout(() => {
+            alert("ok");
+          }, 500);
+        }}
+        validationSchema={loginForm}
+      >
+        {(props: FormikProps<ILoginForm>) => {
+          const {
+            values,
+            touched,
+            errors,
+            handleBlur,
+            handleChange,
+            isSubmitting,
+            handleReset,
+          } = props;
+          return (
+            <Form>
+              <DialogContent style={{ overflow: "hidden" }}>
+                <Grid container spacing={3}>
+                  <Grid item xs={12}>
+                    <TextField
+                      fullWidth
+                      required
+                      id="email"
+                      variant="filled"
+                      label="Email Address"
+                      value={values.email}
+                      type="text"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      error={errors.email && touched.email ? true : false}
+                      helperText={
+                        errors.email && touched.email
+                          ? errors.email
+                          : "Enter Your Email"
+                      }
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      fullWidth
+                      required
+                      variant="filled"
+                      label="Password"
+                      id="password"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      error={errors.password && touched.password ? true : false}
+                      helperText={
+                        errors.password && touched.password
+                          ? errors.password
+                          : "Enter Your Password"
+                      }
+                      type="password"
+                    />
+                  </Grid>
+                </Grid>
+              </DialogContent>
+              <DialogActions style={{ overflow: "hidden" }}>
+                <Grid container spacing={3}>
+                  <Grid item xs={12}>
+                    <Button
+                      type="submit"
+                      color="primary"
+                      variant="contained"
+                      size="large"
+                      fullWidth
+                    >
+                      LOGIN
+                    </Button>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Button
+                      color="secondary"
+                      variant="outlined"
+                      size="large"
+                      fullWidth
+                      type="reset"
+                      onReset={handleReset}
+                    >
+                      CANCEL
+                    </Button>
+                  </Grid>
+                </Grid>
+              </DialogActions>
+            </Form>
+          );
+        }}
+      </Formik>
     </Dialog>
   );
 };
