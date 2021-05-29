@@ -43,7 +43,7 @@ const LoginDialog: React.FC<DialogProps> = ({ open, onClose }) => {
 
   return (
     <Dialog open={open} onClose={handleClose}>
-      <DialogTitle>
+      <DialogTitle disableTypography>
         <Typography variant="h5" align="center">
           Account Login
         </Typography>
