@@ -11,6 +11,8 @@ import reducers, { RootState } from './reducers';
 
 type Action = ActionType<typeof actions>;
 
+console.log(typeof actions)
+
 declare global {
     interface Window {
       __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: Function;

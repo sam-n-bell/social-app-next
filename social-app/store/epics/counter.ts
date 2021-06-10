@@ -10,7 +10,7 @@ type Action = ActionType<typeof actions>;
 export const incrementEpic: Epic<Action, Action, RootState> = action$ =>
     action$.pipe(
         filter(isActionOf(actions.incrementCountAction)),
-        map(() => actions.incrementCountAction())
+        map(actions.incrementCountActionSuccess)
     )
 
 export default [incrementEpic]

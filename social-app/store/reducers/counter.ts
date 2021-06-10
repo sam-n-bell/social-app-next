@@ -1,6 +1,5 @@
-import { ActionType } from "typesafe-actions";
+import { ActionType, getType } from "typesafe-actions";
 import * as actions from "../actions/counter";
-import { INCREMENT_COUNT } from "../constants/counter";
 
 
 type Action = ActionType<typeof actions>;
@@ -15,10 +14,13 @@ const initialState: CounterState = {
 
 export const counterReducer = (state: CounterState = initialState, action: Action): CounterState => {
     switch(action.type) {
-        case INCREMENT_COUNT: {
+        case getType(actions.incrementCountActionSuccess): {
             return {
                 value: state.value + 1
             }
+        }
+        case getType(actions.incrementCountAction): {
+            return state;
         }
         default: {
             return state;
