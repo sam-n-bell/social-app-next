@@ -1,0 +1,1 @@
+export const INCREMENT_COUNT = "@@count/INCREMENT"
