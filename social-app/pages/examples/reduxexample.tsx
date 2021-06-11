@@ -1,8 +1,10 @@
 import { Button } from "@material-ui/core";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../store/actions/auth";
 import { incrementCountAction } from "../../store/actions/counter";
 import { RootState } from "../../store/reducers";
+import { AuthState } from "../../store/reducers/auth";
 import { CounterState } from "../../store/reducers/counter";
 
 const ReduceExample: React.FC = () => {
@@ -11,14 +13,19 @@ const ReduceExample: React.FC = () => {
   const counterState = useSelector<RootState, CounterState>(
     (state) => state.counter
   );
+  const authState = useSelector<RootState, AuthState>((state) => state.auth);
 
   const dispatchLogin = () => {
     dispatch(incrementCountAction());
+    dispatch(login({ email: "one", password: "two" }));
+    console.log(authState);
   };
 
   return (
     <>
-      <span>Template Page {counterState.value}</span>
+      <span>
+        Template Page {counterState.value} {typeof authState}
+      </span>
       <Button variant="contained" color="primary" onClick={dispatchLogin}>
         Test Redux
       </Button>
