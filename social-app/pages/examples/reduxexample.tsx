@@ -17,7 +17,6 @@ const ReduceExample: React.FC = () => {
 
   const dispatchLogin = () => {
     dispatch(login({ email: "one", password: "two" }));
-    console.log(authState);
   };
 
   const dispatchIncrement = () => {
