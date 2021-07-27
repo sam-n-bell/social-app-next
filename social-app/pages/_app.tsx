@@ -1,10 +1,12 @@
-import React from "react";
-import Head from "next/head";
-import { AppProps } from "next/app";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import myTheme from "../theme";
 import { ThemeProvider } from "@material-ui/core";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { AppProps } from "next/app";
+import Head from "next/head";
+import React from "react";
+import { Provider } from "react-redux";
 import Header from "../components/header";
+import store from "../store";
+import myTheme from "../theme";
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   React.useEffect(() => {
@@ -22,10 +24,12 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ThemeProvider theme={myTheme}>
-        <Header />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider theme={myTheme}>
+          <Header />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </Provider>
     </React.Fragment>
   );
 };

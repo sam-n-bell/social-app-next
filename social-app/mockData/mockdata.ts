@@ -13,5 +13,3 @@ export const mockTableDataColumns: GridColDef[] = [
     {field: "ikbId", headerName: "IKB ID"},
     {field: "lastUpdated", headerName: "Last Updated", width: 200}
 ]
-
-export default null;
