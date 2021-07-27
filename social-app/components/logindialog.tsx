@@ -54,9 +54,7 @@ const LoginDialog: React.FC<DialogProps> = ({ open, onClose }) => {
           password: "",
         }}
         onSubmit={(values: ILoginForm) => {
-          setTimeout(() => {
-            alert("ok");
-          }, 500);
+          login();
         }}
         validationSchema={loginForm}
       >

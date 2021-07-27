@@ -1,7 +1,5 @@
 import { ActionType, getType } from "typesafe-actions";
 import * as actions from "../actions/auth";
-// import {LoginResponse} from '../../types/auth';
-
 
 type Action = ActionType<typeof actions>;
 
@@ -20,7 +18,6 @@ const initialState: AuthState = {
 export const authReducer = (state: AuthState = initialState, action: Action): AuthState => {
     switch(action.type) {
         case getType(actions.login): {
-            console.log("login")
             return {
                 token: null,
                 authenticated: false,
@@ -28,7 +25,6 @@ export const authReducer = (state: AuthState = initialState, action: Action): Au
             }
         }
         case getType(actions.loginSuccess): {
-            console.log("success")
             return {
                 token: action.payload.token,
                 authenticated: true,
@@ -36,11 +32,11 @@ export const authReducer = (state: AuthState = initialState, action: Action): Au
             }
         }
         case getType(actions.loginFailure): {
-            console.log("error")
             return {
                 token: null,
                 authenticated: false,
-                errorMessage: "broke"
+                // supposedly how to get message from an Error()
+                errorMessage: action.payload.message
             }
         }
         default: {

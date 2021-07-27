@@ -16,9 +16,12 @@ const ReduceExample: React.FC = () => {
   const authState = useSelector<RootState, AuthState>((state) => state.auth);
 
   const dispatchLogin = () => {
-    dispatch(incrementCountAction());
     dispatch(login({ email: "one", password: "two" }));
     console.log(authState);
+  };
+
+  const dispatchIncrement = () => {
+    dispatch(incrementCountAction());
   };
 
   return (
@@ -27,7 +30,10 @@ const ReduceExample: React.FC = () => {
         Template Page {counterState.value} {typeof authState}
       </span>
       <Button variant="contained" color="primary" onClick={dispatchLogin}>
-        Test Redux
+        Test Login Redux
+      </Button>
+      <Button variant="contained" color="primary" onClick={dispatchIncrement}>
+        Test Increment Redux
       </Button>
     </>
   );

@@ -7,11 +7,7 @@ import epics from './epics';
 import reducers, { RootState } from './reducers';
 
 
-
-
 type Action = ActionType<typeof actions>;
-
-console.log(typeof actions)
 
 declare global {
     interface Window {
@@ -19,7 +15,7 @@ declare global {
     }
   }
 
-  const composeEnhancers = compose;
+  const composeEnhancers =  (typeof window !== 'undefined' && window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
 
   const epicMiddleware = createEpicMiddleware<Action, Action, RootState>();

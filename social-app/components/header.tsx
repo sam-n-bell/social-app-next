@@ -72,7 +72,6 @@ const Header: React.FC = () => {
       </Drawer>
       <AppBar position="static" className={classes.bar}>
         <Toolbar>
-          <span>{loginOpen.toString()}</span>
           <Box
             component="div"
             display={{ md: "none" }}
